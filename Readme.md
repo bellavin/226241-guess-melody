@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дмитрий Беллавин](https://up.htmlacademy.ru/ecmascript/6/user/226241).
-* Наставник: `Неизвестно`.
+* Наставник: [Николай Эмрих](https://htmlacademy.ru/profile/id129463).
 
 ---
 
