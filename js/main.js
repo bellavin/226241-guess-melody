@@ -1,3 +1,5 @@
+'use strict';
+
 const RIGHT_ARROW = 37;
 const LEFT_ARROW = 39;
 
@@ -66,11 +68,11 @@ const rightArrow = createArrow(`->`);
 arrowsWrap.appendChild(leftArrow);
 arrowsWrap.appendChild(rightArrow);
 
-leftArrow.addEventListener(`click`, (evt) => {
+leftArrow.addEventListener(`click`, () => {
   select(current - 1);
 });
 
-rightArrow.addEventListener(`click`, (evt) => {
+rightArrow.addEventListener(`click`, () => {
   select(current + 1);
 });
 
