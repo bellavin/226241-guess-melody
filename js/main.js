@@ -1,8 +1,8 @@
 'use strict';
 
-const Arrow = {
-  RIGHT: 37,
-  LEFT: 39
+const KeyCode = {
+  RIGHT_ARROW: 37,
+  LEFT_ARROW: 39
 };
 
 const mainElement = document.querySelector(`.main`);
@@ -15,21 +15,21 @@ const updateScreen = (element) => {
 const screens = Array.from(document.querySelectorAll(`template`)).
   map((it) => it.content);
 
-let current = 0;
+let currentScreen = 0;
 const changeScreen = (index) => {
   index = index < 0 ? screens.length - 1 : index;
   index = index >= screens.length ? 0 : index;
-  current = index;
-  updateScreen(screens[current]);
+  currentScreen = index;
+  updateScreen(screens[currentScreen]);
 };
 
 document.addEventListener(`keydown`, (evt) => {
   switch (evt.keyCode) {
-    case Arrow.RIGHT:
-      changeScreen(current + 1);
+    case KeyCode.RIGHT_ARROW:
+      changeScreen(currentScreen + 1);
       break;
-    case Arrow.LEFT:
-      changeScreen(current - 1);
+    case KeyCode.LEFT_ARROW:
+      changeScreen(currentScreen - 1);
       break;
   }
 });
@@ -60,11 +60,11 @@ const leftArrow = arrowsWrap.querySelector(`.arrows__btn:first-of-type`);
 const rightArrow = arrowsWrap.querySelector(`.arrows__btn:last-of-type`);
 
 leftArrow.addEventListener(`click`, () => {
-  changeScreen(current - 1);
+  changeScreen(currentScreen - 1);
 });
 
 rightArrow.addEventListener(`click`, () => {
-  changeScreen(current + 1);
+  changeScreen(currentScreen + 1);
 });
 
 changeScreen(0);
