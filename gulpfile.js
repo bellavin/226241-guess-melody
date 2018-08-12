@@ -1,5 +1,3 @@
-'use strict';
-
 const del = require(`del`);
 const gulp = require(`gulp`);
 const sass = require(`gulp-sass`);
@@ -35,10 +33,16 @@ gulp.task(`style`, () => {
     pipe(gulp.dest(`build/css`));
 });
 
+const rollup = require(`gulp-better-rollup`);
+const sourcemaps = require(`gulp-sourcemaps`);
+
 gulp.task(`scripts`, () => {
-  return gulp.src(`js/**/*.js`).
-    pipe(plumber()).
-    pipe(gulp.dest(`build/js/`));
+  return gulp.src(`js/main.js`)
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(rollup({}, `iife`))
+    .pipe(sourcemaps.write(``))
+    .pipe(gulp.dest(`build/js`));
 });
 
 gulp.task(`imagemin`, [`copy`], () => {
