@@ -1,13 +1,16 @@
-import {updateScreen} from '../util.js';
-import welcomeScreen from './welcome.js';
+import {updateScreen, renderScreen} from '../util.js';
+import {welcomeScreenEl} from './welcome.js';
 
-const resultSuccessTmp = document.querySelector(`#result-success`).content;
-const resultSuccess = resultSuccessTmp.querySelector(`.result`);
+const resultSuccessScreenTmp = `<div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
+<h2 class="result__title">Вы настоящий меломан!</h2>
+<p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
+<p class="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>
+<button class="result__replay" type="button">Сыграть ещё раз</button>`;
 
-const replayBtn = resultSuccess.querySelector(`.result__replay`);
+export const resultSuccessScreenEl = renderScreen(resultSuccessScreenTmp, `result`);
+
+const replayBtn = resultSuccessScreenEl.querySelector(`.result__replay`);
 replayBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();
-  updateScreen(welcomeScreen);
+  updateScreen(welcomeScreenEl);
 });
-
-export default resultSuccess;

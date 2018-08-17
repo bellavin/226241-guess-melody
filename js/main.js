@@ -1,4 +1,4 @@
 import {updateScreen} from './util.js';
-import welcomeScreen from './screens/welcome.js';
+import {welcomeScreenEl} from './screens/welcome.js';
 
-updateScreen(welcomeScreen);
+updateScreen(welcomeScreenEl);

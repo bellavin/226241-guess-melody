@@ -1,7 +1,10 @@
 const mainElement = document.querySelector(`.main`);
 
-export const renderScreen = (template) => {
-  return template.cloneNode(true);
+export const renderScreen = (template, className) => {
+  const wrapper = document.createElement(`section`);
+  wrapper.className = className;
+  wrapper.innerHTML = template.trim();
+  return wrapper;
 };
 
 export const updateScreen = (element) => {

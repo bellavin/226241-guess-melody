@@ -1,13 +1,15 @@
-import {updateScreen} from '../util.js';
-import welcomeScreen from './welcome.js';
+import {updateScreen, renderScreen} from '../util.js';
+import {welcomeScreenEl} from './welcome.js';
 
-const failTriesTmp = document.querySelector(`#fail-tries`).content;
-const failTries = failTriesTmp.querySelector(`.result`);
+const failTriesScreenTmp = `<div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
+<h2 class="result__title">Какая жалость!</h2>
+<p class="result__total result__total--fail">У вас закончились все попытки. Ничего, повезёт в следующий раз!</p>
+<button class="result__replay" type="button">Попробовать ещё раз</button>`;
 
-const replayBtn = failTries.querySelector(`.result__replay`);
+export const failTriesScreenEl = renderScreen(failTriesScreenTmp, `result`);
+
+const replayBtn = failTriesScreenEl.querySelector(`.result__replay`);
 replayBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();
-  updateScreen(welcomeScreen);
+  updateScreen(welcomeScreenEl);
 });
-
-export default failTries;
