@@ -1,17 +1,17 @@
-const mainElement = document.querySelector(`.main`);
-
-export const renderScreen = (template, className) => {
-  const wrapper = document.createElement(`section`);
-  wrapper.className = className;
+export const getElemFromTemplate = (template) => {
+  const wrapper = document.createElement(`div`);
   wrapper.innerHTML = template.trim();
-  return wrapper;
+  return wrapper.firstElementChild;
 };
 
-export const updateScreen = (element) => {
-  mainElement.innerHTML = ``;
-  mainElement.appendChild(element);
+
+const mainElem = document.querySelector(`.main`);
+export const updateScreen = (elem) => {
+  mainElem.innerHTML = ``;
+  mainElem.appendChild(elem);
 };
 
-export const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const getRandomInt = (num) => {
+  return Math.floor(Math.random() * num);
 };
