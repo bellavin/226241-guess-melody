@@ -83,11 +83,11 @@ const screenElem = getElemFromTemplate(template);
 
 
 const form = screenElem.querySelector(`.game__tracks`);
-const checkoutBtns = Array.from(form.answer);
+const checkBtns = Array.from(form.answer);
 const submitBtn = form.querySelector(`.game__submit`);
 form.addEventListener(`change`, (evt) => {
   evt.preventDefault();
-  submitBtn.disabled = !checkoutBtns.some((elem) => elem.checked);
+  submitBtn.disabled = !checkBtns.some((elem) => elem.checked);
 });
 
 submitBtn.addEventListener(`click`, (evt) => {
