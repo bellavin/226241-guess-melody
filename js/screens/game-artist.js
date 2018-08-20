@@ -65,7 +65,6 @@ const template = `<section class="game game--artist">
 
 const screenElem = getElemFromTemplate(template);
 
-
 const form = screenElem.querySelector(`.game__artist`);
 const resultScreens = [resultSuccessScreenElem, failTriesScreenElem, failTimeScreenElem];
 form.addEventListener(`change`, (evt) => {

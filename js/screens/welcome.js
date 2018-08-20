@@ -15,7 +15,6 @@ const template = `<section class="welcome">
 
 const screenElem = getElemFromTemplate(template);
 
-
 const playBtn = screenElem.querySelector(`.welcome__button`);
 playBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();

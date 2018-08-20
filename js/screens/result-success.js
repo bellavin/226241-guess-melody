@@ -11,7 +11,6 @@ const template = `<section class="result">
 
 const screenElem = getElemFromTemplate(template);
 
-
 const replayBtn = screenElem.querySelector(`.result__replay`);
 replayBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();

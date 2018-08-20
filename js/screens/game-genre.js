@@ -81,7 +81,6 @@ const template = `<section class="game game--genre">
 
 const screenElem = getElemFromTemplate(template);
 
-
 const form = screenElem.querySelector(`.game__tracks`);
 const checkBtns = Array.from(form.answer);
 const submitBtn = form.querySelector(`.game__submit`);
@@ -93,6 +92,7 @@ form.addEventListener(`change`, (evt) => {
 submitBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();
   updateScreen(gameArtistScreenElem);
+  form.reset();
 });
 
 
