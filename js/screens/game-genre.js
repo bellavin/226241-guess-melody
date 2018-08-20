@@ -93,6 +93,7 @@ submitBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();
   updateScreen(gameArtistScreenElem);
   form.reset();
+  submitBtn.disabled = true;
 });
 
 
@@ -100,6 +101,8 @@ const replayBtn = screenElem.querySelector(`.game__back`);
 replayBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();
   updateScreen(welcomeScreenElem);
+  form.reset();
+  submitBtn.disabled = true;
 });
 
 export default screenElem;

@@ -78,6 +78,7 @@ const replayBtn = screenElem.querySelector(`.game__back`);
 replayBtn.addEventListener(`click`, (evt) => {
   evt.preventDefault();
   updateScreen(welcomeScreenElem);
+  form.reset();
 });
 
 export default screenElem;
