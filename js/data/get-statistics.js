@@ -19,7 +19,7 @@ export const getStatistics = (otherResults, playerResult) => {
   }
 
   if (total === 1 + otherResults.length) {
-    return `Вы прошли игру, но пока на первом с конца месте, дерзайте и у Вас все получится`;
+    return `Вы прошли игру, но ваш результат пока последний, дерзайте и у Вас все получится`;
   }
 
   const numOfPlayers = otherResults.length + 1;
