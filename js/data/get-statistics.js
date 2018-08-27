@@ -22,6 +22,7 @@ export const getStatistics = (otherResults, playerResult) => {
     return `Вы прошли игру, но пока на первом с конца месте, дерзайте и у Вас все получится`;
   }
 
-  const statistic = Math.round((1 - total / (otherResults.length + 1)) * 100);
-  return `Вы заняли ${total} место из ${otherResults.length + 1} игроков. Это лучше, чем у ${statistic}% игроков`;
+  const numOfPlayers = otherResults.length + 1;
+  const statistic = Math.round((1 - total / numOfPlayers) * 100);
+  return `Вы заняли ${total} место из ${numOfPlayers} игроков. Это лучше, чем у ${statistic}% игроков`;
 };
