@@ -42,17 +42,6 @@ describe(`Game`, () => {
             {correct: true, time: 30},
             {correct: true, time: 30},
             {correct: true, time: 30},
-            {correct: true, time: 30}
-          ], 1
-      ), -1);
-    });
-    it(`should return -1`, () => {
-      assert.equal(countScore(
-          [
-            {correct: true, time: 30},
-            {correct: true, time: 30},
-            {correct: true, time: 30},
-            {correct: true, time: 30},
             {correct: true, time: 30},
             {correct: true, time: 30},
             {correct: true, time: 30},
@@ -60,6 +49,15 @@ describe(`Game`, () => {
             {correct: true, time: 30},
             {correct: true, time: 30}
           ], 0
+      ), -1);
+      assert.equal(countScore(
+          [
+            {correct: true, time: 30},
+            {correct: true, time: 30},
+            {correct: true, time: 30},
+            {correct: true, time: 30},
+            {correct: true, time: 30}
+          ], 1
       ), -1);
     });
   });

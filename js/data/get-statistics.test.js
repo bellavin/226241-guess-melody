@@ -4,25 +4,37 @@ import {getStatistics} from './get-statistics';
 
 describe(`Player statistic`, () => {
   it(`should return player statistic`, () => {
-    assert.equal(getStatistics(
+    assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
           score: 12,
           time: 40
         }
-    ), `Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`);
-  });
-  it(`should return player statistic`, () => {
-    assert.equal(getStatistics(
+    ), `Вы заняли лучшее место среди всех игроков. Наши поздравления, Вы настоящий меломан`);
+    assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
-          score: 5,
+          score: 2,
           time: 40
         }
-    ), `Вы заняли 4 место из 5 игроков. Это лучше, чем у 20% игроков`);
+    ), `Вы прошли игру, но пока на первом с конца месте, дерзайте и у Вас все получится`);
+    assert.strictEqual(getStatistics(
+        [4, 5, 8, 10, 11],
+        {
+          score: 9,
+          time: 40
+        }
+    ), `Вы заняли 3 место из 6 игроков. Это лучше, чем у 50% игроков`);
+    assert.strictEqual(getStatistics(
+        [10, 3, 8, 10, 11],
+        {
+          score: 7,
+          time: 40
+        }
+    ), `Вы заняли 5 место из 6 игроков. Это лучше, чем у 17% игроков`);
   });
   it(`should return fail`, () => {
-    assert.equal(getStatistics(
+    assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
           score: 5,
@@ -31,7 +43,7 @@ describe(`Player statistic`, () => {
     ), `Время вышло! Вы не успели отгадать все мелодии`);
   });
   it(`should return fail`, () => {
-    assert.equal(getStatistics(
+    assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
           score: 5,

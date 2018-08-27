@@ -13,6 +13,15 @@ export const getStatistics = (otherResults, playerResult) => {
       total++;
     }
   }
-  const statistic = Math.round((1 - total / otherResults.length) * 100);
-  return `Вы заняли ${total} место из ${otherResults.length} игроков. Это лучше, чем у ${statistic}% игроков`;
+
+  if (total === 1) {
+    return `Вы заняли лучшее место среди всех игроков. Наши поздравления, Вы настоящий меломан`;
+  }
+
+  if (total === 1 + otherResults.length) {
+    return `Вы прошли игру, но пока на первом с конца месте, дерзайте и у Вас все получится`;
+  }
+
+  const statistic = Math.round((1 - total / (otherResults.length + 1)) * 100);
+  return `Вы заняли ${total} место из ${otherResults.length + 1} игроков. Это лучше, чем у ${statistic}% игроков`;
 };
