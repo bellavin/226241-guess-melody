@@ -3,7 +3,7 @@ import {getStatistics} from './get-statistics';
 
 
 describe(`Player statistic`, () => {
-  it(`should return player statistic`, () => {
+  it(`should return first place`, () => {
     assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
@@ -11,6 +11,8 @@ describe(`Player statistic`, () => {
           time: 40
         }
     ), `Вы заняли лучшее место среди всех игроков. Наши поздравления, Вы настоящий меломан`);
+  });
+  it(`should return last place`, () => {
     assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
@@ -18,6 +20,8 @@ describe(`Player statistic`, () => {
           time: 40
         }
     ), `Вы прошли игру, но ваш результат пока последний, дерзайте и у Вас все получится`);
+  });
+  it(`should return player statistic`, () => {
     assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
@@ -33,7 +37,7 @@ describe(`Player statistic`, () => {
         }
     ), `Вы заняли 5 место из 6 игроков. Это лучше, чем у 17% игроков`);
   });
-  it(`should return fail`, () => {
+  it(`should return time is over`, () => {
     assert.strictEqual(getStatistics(
         [4, 5, 8, 10, 11],
         {
