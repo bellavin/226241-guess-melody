@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {countScore} from './count-score';
+import {countScore} from '../count-score';
 
 describe(`Count score`, () => {
   describe(`Correct answers`, () => {
@@ -49,8 +49,8 @@ describe(`Count score`, () => {
     });
   });
 
-  describe(`Too mach incorrect answers`, () => {
-    it(`should return -1`, () => {
+  describe(`Input errors`, () => {
+    it(`Too mach incorrect answers, should return -1`, () => {
       assert.strictEqual(countScore(
           [
             {correct: true, time: 31},
@@ -80,9 +80,6 @@ describe(`Count score`, () => {
           ], 3
       ), -1);
     });
-  });
-
-  describe(`Input errors`, () => {
     it(`too few lives, should return -1`, () => {
       assert.strictEqual(countScore(
           [
