@@ -80,7 +80,7 @@ describe(`Count score`, () => {
           ], 3
       ), -1);
     });
-    it(`too few lives, should return -1`, () => {
+    it(`too mach answers, should return -1`, () => {
       assert.strictEqual(countScore(
           [
             {correct: true, time: 30},
@@ -92,13 +92,6 @@ describe(`Count score`, () => {
             {correct: true, time: 30},
             {correct: true, time: 30},
             {correct: true, time: 30},
-            {correct: true, time: 30}
-          ], 0
-      ), -1);
-    });
-    it(`too mach lives, should return -1`, () => {
-      assert.strictEqual(countScore(
-          [
             {correct: true, time: 30},
             {correct: true, time: 30},
             {correct: true, time: 30},
@@ -109,10 +102,10 @@ describe(`Count score`, () => {
             {correct: true, time: 30},
             {correct: true, time: 30},
             {correct: true, time: 30}
-          ], 4
+          ], 1
       ), -1);
     });
-    it(`too few player answers, should return -1`, () => {
+    it(`too few answers, should return -1`, () => {
       assert.strictEqual(countScore(
           [
             {correct: true, time: 30},

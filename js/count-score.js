@@ -1,43 +1,25 @@
-export const countScore = (answers, lives) => {
-  const Points = {
-    ANSWER: 1,
-    FAST_ANSWER: 2,
-    WRONG_ANSWER: -2,
-  };
-  const LivesNum = {
-    MIN: 1,
-    MAX: 3
-  };
-  const Answers = {
-    NUM: 10,
-    INCORRECT: 2
-  };
-  const GOOD_TIME = 30;
+import {initialState, Point, FAST_ANSWER_MAX_TIME, ANSWERS_NUM} from './consts';
 
-
-  if (answers.length !== Answers.NUM) {
+export const countScore = (answers) => {
+  if (answers.length !== ANSWERS_NUM) {
     return -1;
   }
-  if (lives > LivesNum.MAX || lives < LivesNum.MIN) {
+  if (answers.filter((answer) => answer.correct).length <= answers.length - initialState.lives) {
     return -1;
   }
-  if (answers.filter((answer) => !answer.correct).length > Answers.INCORRECT) {
-    return -1;
-  }
-
 
   let score = 0;
   answers.forEach((answer) => {
     if (answer.correct) {
-      if (answer.time >= GOOD_TIME) {
-        score += Points.ANSWER;
+      if (answer.time >= FAST_ANSWER_MAX_TIME) {
+        score += Point.ANSWER;
       }
-      if (answer.time < GOOD_TIME) {
-        score += Points.FAST_ANSWER;
+      if (answer.time < FAST_ANSWER_MAX_TIME) {
+        score += Point.FAST_ANSWER;
       }
     }
     if (!answer.correct) {
-      score += Points.WRONG_ANSWER;
+      score += Point.WRONG_ANSWER;
     }
   });
   return score;
