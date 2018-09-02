@@ -1,4 +1,4 @@
-import {updateScreen, getElemFromTemplate} from '../util.js';
+import {updateScreen, getElemFromTmp} from '../util.js';
 import gameGenreScreenElem from './game-genre.js';
 
 const template = `<section class="welcome">
@@ -13,7 +13,7 @@ const template = `<section class="welcome">
   <p class="welcome__text">Удачи!</p>
 </section>`;
 
-const screenElem = getElemFromTemplate(template);
+const screenElem = getElemFromTmp(template);
 
 const playBtn = screenElem.querySelector(`.welcome__button`);
 playBtn.addEventListener(`click`, (evt) => {
