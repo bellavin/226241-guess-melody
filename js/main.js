@@ -11,7 +11,7 @@ import questions from './data/questions-data';
 import {initialState} from './consts';
 
 
-let game;
+
 
 const renderResultScreen = (tmp) => {
   const resultElem = getElemFromTmp(tmp);
@@ -20,12 +20,29 @@ const renderResultScreen = (tmp) => {
   replay(replayBtn);
 };
 
-// const continue = () => {};
+let game;
 
 const startGame = () => {
   game = Object.assign({}, initialState);
 
   let quetionIndex = 0;
+
+  const continueGame = (expression) => {
+    if (expression) {
+      quetionIndex++;
+      updateGame(game, questions[quetionIndex].type);
+    } else {
+      if (canContinue(game)) {
+        quetionIndex++;
+        game.lives -= 1;
+        updateGame(game, questions[quetionIndex].type);
+      } else {
+        renderResultScreen(resultTmp.failTries);
+        game = Object.assign({}, initialState);
+        quetionIndex = 0;
+      }
+    }
+  };
 
   const updateGame = (state, type) => {
     let screenElem;
@@ -42,18 +59,7 @@ const startGame = () => {
 
       form.addEventListener(`change`, (evt) => {
         evt.preventDefault();
-        if (questions[quetionIndex].rightAnswer === questions[quetionIndex].answers[evt.target.value]) {
-          quetionIndex++;
-          updateGame(game, questions[quetionIndex].type);
-        } else {
-          if (canContinue(game)) {
-            quetionIndex++;
-            game.lives -= 1;
-            updateGame(game, questions[quetionIndex].type);
-          } else {
-            renderResultScreen(resultTmp.failTries);
-          }
-        }
+        continueGame(questions[quetionIndex].rightAnswer === questions[quetionIndex].answers[evt.target.value]);
         form.reset();
       });
     }
@@ -76,19 +82,7 @@ const startGame = () => {
         const userAnswers = checkBtns
           .filter((btn) => btn.checked)
           .map((answer) => questions[quetionIndex].answers[answer.value]);
-
-        if (arraysEqual(rightAnswers, userAnswers)) {
-          quetionIndex++;
-          updateGame(game, questions[quetionIndex].type);
-        } else {
-          if (canContinue(game)) {
-            quetionIndex++;
-            game.lives -= 1;
-            updateGame(game, questions[quetionIndex].type);
-          } else {
-            renderResultScreen(resultTmp.failTries);
-          }
-        }
+        continueGame(arraysEqual(rightAnswers, userAnswers));
         form.reset();
       });
     }
@@ -105,6 +99,8 @@ const startGame = () => {
 
     if (type === `result`) {
       renderResultScreen(resultTmp.success);
+      game = Object.assign({}, initialState);
+      quetionIndex = 0;
     }
   };
 

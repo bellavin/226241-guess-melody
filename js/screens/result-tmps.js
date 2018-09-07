@@ -33,8 +33,7 @@ const replay = (replayBtn) =>
   replayBtn.addEventListener(`click`, (evt) => {
     evt.preventDefault();
     updateScreen(welcomeScreenElem);
-  }
-  );
+  });
 
 
 export {resultTmp, replay};
