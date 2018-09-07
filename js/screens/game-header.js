@@ -1,7 +1,7 @@
-import initialState from '../data/initial-state';
-import {getTime} from '../util';
+import {updateScreen, getTime} from '../util';
+import welcomeScreenElem from './welcome';
 
-const tmp = (state) => `<header class="game__header">
+const headerTmp = (state) => `<header class="game__header">
   <a class="game__back" href="#">
     <span class="visually-hidden">Сыграть ещё раз</span>
     <img class="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию">
@@ -25,4 +25,14 @@ const tmp = (state) => `<header class="game__header">
   </div>
 </header>`;
 
-export default tmp(initialState);
+const replayBtnListener = (btn) => {
+  btn.addEventListener(`click`, (evt) => {
+    evt.preventDefault();
+    updateScreen(welcomeScreenElem);
+    // form.reset();
+    // submitBtn.disabled = true;
+  });
+};
+
+
+export {headerTmp, replayBtnListener};

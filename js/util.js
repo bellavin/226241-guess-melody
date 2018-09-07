@@ -12,11 +12,6 @@ export const updateScreen = (elem) => {
 };
 
 
-export const getRandomInt = (num) => {
-  return Math.floor(Math.random() * num);
-};
-
-
 export const addZero = (num) => {
   if (num < 10) {
     return `0` + num;
@@ -31,3 +26,24 @@ export const getTime = (minutes) => {
   <span class="timer__dots">:</span>
   <span class="timer__secs">${addZero(time.getSeconds())}</span>`;
 };
+
+export const arraysEqual = (a, b) => {
+  if (a === b) {
+    return true;
+  }
+  if (a === null || b === null) {
+    return false;
+  }
+  if (a.length !== b.length) {
+    return false;
+  }
+
+  for (let i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+export const canContinue = (game) => game.lives - 1 > 0;
