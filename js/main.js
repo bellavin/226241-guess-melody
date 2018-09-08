@@ -29,13 +29,11 @@ const startGame = () => {
   const continueGame = (expression) => {
     if (expression) {
       answers.push({correct: true, time: 32});
-      console.log(answers);
       quetionIndex++;
       updateGame(game, questions[quetionIndex].type);
     } else {
       if (canContinue(game)) {
         answers.push({correct: false, time: 31});
-        console.log(answers);
         game.lives -= 1;
         quetionIndex++;
         updateGame(game, questions[quetionIndex].type);
