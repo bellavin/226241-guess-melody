@@ -11,6 +11,6 @@ const Point = {
 
 const FAST_ANSWER_MAX_TIME = 30;
 
-const ANSWERS_NUM = 10;
+const ANSWERS_NUM = 8;
 
 export {initialState, Point, FAST_ANSWER_MAX_TIME, ANSWERS_NUM};
